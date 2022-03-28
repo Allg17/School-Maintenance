@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Claro test - Albert Lopez</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/sweetalert2.css" rel="stylesheet" />
+    <script src="~/Scripts/sweetalert2.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Mantenimiento Colegio ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Estudiantes", "Index", "Estudiantes")</li>
+                    <li>@Html.ActionLink("Profesores", "Index", "Profesores")</li>
+                    <li>@Html.ActionLink("Aulas", "Index", "Aulas")</li>
+                    <li>@Html.ActionLink("Asignaturas", "Index", "Asignatura")</li>
+                    <li>@Html.ActionLink("Asignar Aula", "Index", "AsignacionDeAulas")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @Html.Partial("_NotificationPanel")
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Claro test - Albert Lopez</p>
+        </footer>
+    </div>
+
+    <script type="text/javascript">
+        function ValidateDeleteSubmit(ctl, event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Atencion!',
+                text: "Seguro que desea Eliminar este registro?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $("#CreateForm").submit();
+                }
+            })
+        }
+
+        function ValidateSubmit(ctl, event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Atencion!',
+                text: "Seguro que desea Enviar este registro?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $("#CreateForm").submit();
+                }
+            })
+        }
+
+        function ValidateUpdateSubmit(ctl, event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Atencion!',
+                text: "Seguro que desea Actualizar este registro?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $("#CreateForm").submit();
+                }
+            })
+        }
+    </script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

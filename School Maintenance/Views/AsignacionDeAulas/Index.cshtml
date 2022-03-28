@@ -1,0 +1,45 @@
+﻿@model IEnumerable<School_Maintenance.Models.AsignacionDeAulas>
+
+@{
+    ViewBag.Title = "Asignaciones de Aulas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Agregar nueva", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Aula.Curso)
+        </th>
+        <th>
+            <span>Cantidad de Estudiantes</span>
+        </th>
+        <th>
+            <span>Cantidad de Asignaturas</span>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Aula.Curso)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Estudiantes.Count)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Detalle.Count)
+    </td>
+    <td>
+        @Html.ActionLink("Editar", "Edit", new { id = item.AsignacionID }) |
+        @Html.ActionLink("Borrar", "Delete", new { id = item.AsignacionID })
+    </td>
+</tr>
+}
+
+</table>

@@ -1,0 +1,42 @@
+﻿@model School_Maintenance.Models.Asignatura
+
+@{
+    ViewBag.Title = "Eliminar Asignatura";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2>@ViewBag.Title</h2>
+<h3>Seguro que desea Eliminar esta Asignatura?</h3>
+<div>
+    <h4>Asignatura</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Horario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Horario)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm("Delete", "Asignatura", FormMethod.Post, new { id = "CreateForm" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" onclick="ValidateDeleteSubmit(this,event)" class="btn btn-danger" /> |
+            @Html.ActionLink("Volver a la Lista", "Index")
+        </div>
+    }
+</div>

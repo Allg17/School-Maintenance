@@ -1,0 +1,43 @@
+﻿@model School_Maintenance.Models.AsignacionDeAulas
+
+@{
+    ViewBag.Title = "Eliminar Asignacion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>Seguro que desea Eliminar Este Registro?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Aula.Curso)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Aula.Curso)
+        </dd>
+
+        <dt>
+            Cantidad de Estudiantes
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Estudiantes.Count)
+        </dd>
+        <dt>
+            Cantidad de Registros
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Detalle.Count)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm("Delete", "AsignacionDeAulas", FormMethod.Post, new { id = "CreateForm" })) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" onclick="ValidateDeleteSubmit(this,event)" class="btn btn-danger" /> |
+            @Html.ActionLink("Volver atras", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<School_Maintenance.Models.Asignatura>
+
+@{
+    ViewBag.Title = "Crear Asignaturas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2>@ViewBag.Title</h2>
+<p>
+    @if (Model.Count() ==8)
+    {
+        <span>Cantidad Maxima de Asignaturas alcanzada!.</span>
+    }
+    else
+    {
+        @Html.ActionLink("Crear nueva asignatura", "Create")
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Horario)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Horario)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.IDAsignatura }) |
+                @Html.ActionLink("Borrar", "Delete", new { id = item.IDAsignatura })
+            </td>
+        </tr>
+    }
+
+</table>
