@@ -159,10 +159,12 @@ namespace School_Maintenance.Repositorios
             {
                 foreach (var item in asignatura.Detalle)
                 {
-                    Db.AsignacionDetalleDb.Remove(Db.AsignacionDetalleDb.Find(item.ID));
-                    item.ID = 0;
+                    if (item.ID > 0)
+                    {
+                        Db.AsignacionDetalleDb.Remove(Db.AsignacionDetalleDb.Find(item.ID));
+                        item.ID = 0;
+                    }
                     Db.AsignacionDetalleDb.Add(item);
-
                 }
 
                 var aula = Db.AsignacionDeAulasDb.Include(x => x.Estudiantes).AsNoTracking().
@@ -178,7 +180,6 @@ namespace School_Maintenance.Repositorios
                     {
                         asignatura.Estudiantes.RemoveAll(x => x.IDEstudiante == item.IDEstudiante);
                     }
-
                 }
 
                 foreach (var item in asignatura.Estudiantes)

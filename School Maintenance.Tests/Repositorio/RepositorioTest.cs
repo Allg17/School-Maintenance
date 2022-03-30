@@ -25,8 +25,8 @@ namespace School_Maintenance.Tests.Repositorio
             {
                 Nombre = "test",
                 Apellido = "Test Test",
-                Edad = 123,
-                Sexo = ""
+                Edad = 12,
+                Sexo = "Fem"
             });
             Assert.IsTrue(res > 0);
         }
@@ -36,7 +36,7 @@ namespace School_Maintenance.Tests.Repositorio
         {
             ISchoolContext context = new SchoolContext();
             RepositorioBase<Estudiante> rp = new Repositorios.RepositorioBase<Estudiante>(context);
-            var res = rp.Delete(4);
+            var res = rp.Delete(1004);
             Assert.IsTrue(res > 0);
         }
 
@@ -49,9 +49,9 @@ namespace School_Maintenance.Tests.Repositorio
             {
                 Nombre = "Tester",
                 Apellido = "Test Test",
-                Edad = 123,
+                Edad = 13,
                 Sexo = "",
-                IDEstudiante = 3
+                IDEstudiante = 1003
             });
             Assert.IsTrue(res > 0);
         }
@@ -70,7 +70,7 @@ namespace School_Maintenance.Tests.Repositorio
         {
             ISchoolContext context = new SchoolContext();
             RepositorioBase<Estudiante> rp = new Repositorios.RepositorioBase<Estudiante>(context);
-            var res = rp.GetById(1);
+            var res = rp.GetById(1002);
             Assert.IsTrue(res.IDEstudiante > 0);
         }
     }

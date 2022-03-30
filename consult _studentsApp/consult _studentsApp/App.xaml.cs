@@ -14,7 +14,7 @@ namespace consult__studentsApp
         public App()
         {
             InitializeComponent();
-            var language = CultureInfo.GetCultures(CultureTypes.NeutralCultures).ToList().First(element => element.EnglishName.Contains("English")); ;
+            var language = CultureInfo.GetCultures(CultureTypes.NeutralCultures).ToList().First(element => element.EnglishName.Contains("Spanish")); ;
             Thread.CurrentThread.CurrentUICulture = language;
             AppResources.Culture = language;
             Thread.CurrentThread.CurrentUICulture = CultureInfo.InstalledUICulture;

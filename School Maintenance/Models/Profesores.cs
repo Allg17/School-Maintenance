@@ -27,11 +27,7 @@ namespace School_Maintenance.Models
             get
             { return Nombre + " " + Apellido; }
         }
-
-
-        //public int AsignacionID { get; set; }
-        //public virtual AsignacionDeAulas Asignacion { get; set; }
-
+      
         public Profesores()
         {
             Nombre = string.Empty;
