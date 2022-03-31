@@ -30,7 +30,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="Model:AsignacionEstudiante">
                     <ViewCell>
-                        <Frame CornerRadius="10" BackgroundColor="White">
+                        <Frame CornerRadius="10" Margin="0,2,0,0" BackgroundColor="White">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>

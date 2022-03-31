@@ -154,22 +154,20 @@ namespace School_Maintenance.Controllers
                     return View(tuple.Item2);
                 }
 
-                // _MasterRepo.AsignacionDeAulas.RefreshDataBase(asignarAulasViewModel.Estudiante.Where(x => x.EstudianteSeleccionado).ToList(), id);
-                List<EstudiantesAgregados> detalle = new List<EstudiantesAgregados>();
-                int i = 12;
-                foreach (var item in asignarAulasViewModel.Estudiante.Where(x => x.EstudianteSeleccionado))
-                {
-                    detalle.Add(new EstudiantesAgregados
-                    {
-                        IDEstudiante = item.IDEstudiante,
-                        AsignacionID = id
-                    });
-                }
+                IEnumerable<EstudiantesAgregados> detalle = from p in asignarAulasViewModel.Estudiante
+                                                            where p.EstudianteSeleccionado
+                                                            select new EstudiantesAgregados
+                                                            {
+                                                                IDEstudiante =
+                                                                 p.IDEstudiante,
+                                                                AsignacionID = id
+                                                            };
+
 
                 if (_MasterRepo.AsignacionDeAulas.UpdateAsignatura(new AsignacionDeAulas
                 {
                     Detalle = asignarAulasViewModel.Detalle,
-                    Estudiantes = detalle,
+                    Estudiantes = detalle.ToList(),
                     IDAula = asignarAulasViewModel.IDAula,
                     AsignacionID = id
                 }) > 0)
@@ -218,11 +216,6 @@ namespace School_Maintenance.Controllers
             {
                 return View();
             }
-        }
-
-        public JsonResult List(string SearchBy)
-        {
-            return Json(_MasterRepo.Estudiante.GetByParam(SearchBy));
         }
 
         private Tuple<bool, AsignarAulasViewModel> Validate(AsignarAulasViewModel asignarAulasViewModel)

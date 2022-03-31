@@ -15,16 +15,8 @@ namespace School_Maintenance.Models
         public virtual Aulas Aula { get; set; }
         public virtual List<AsignacionAulaDetalle> Detalle { get; set; }
         public virtual List<EstudiantesAgregados> Estudiantes { get; set; }
-        //public virtual List<Estudiante> Estudiante { get; set; }
-        //public virtual List<Profesores> Profesores { get; set; }
-        //public virtual List<Asignatura> Asignaturas { get; set; }
-
         public AsignacionDeAulas()
         {
-            //    Aula = new Aulas();
-            //    Estudiante = new List<Estudiante>();
-            //    Profesores = new List<Profesores>();
-            //    Asignaturas = new List<Asignatura>();
         }
     }
 }
