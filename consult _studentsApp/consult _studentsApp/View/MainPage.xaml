@@ -8,6 +8,7 @@
              xmlns:resources="clr-namespace:consult__studentsApp.Resources"
              NavigationPage.HasNavigationBar="True"
              BackgroundColor="LightGray"
+                xmlns:iconize="clr-namespace:Plugin.Iconize;assembly=Plugin.Iconize"
              x:Class="consult__studentsApp.MainPage">
     <ContentPage.BindingContext>
         <ViewModel:MainPageViewModel/>
@@ -15,17 +16,28 @@
 
     <StackLayout>
         <Frame CornerRadius="10">
-        <Label Text="{Binding Title}" FontSize="30"  HorizontalTextAlignment="Center" BackgroundColor="White"/>
+            <Label Text="{Binding Title}" FontSize="30"  HorizontalTextAlignment="Center" BackgroundColor="White"/>
         </Frame>
         <Frame CornerRadius="10" Margin="5" >
-            <SearchBar Placeholder="{x:Static resources:AppResources.busqueda}" TextColor="Black" Text="{Binding SearchParam}" >
-                <SearchBar.Behaviors>
-                    <xct:EventToCommandBehavior
+            <StackLayout Orientation="Horizontal">
+                <SearchBar Placeholder="{x:Static resources:AppResources.busqueda}" TextColor="Black" Text="{Binding SearchParam}" >
+                    <SearchBar.Behaviors>
+                        <xct:EventToCommandBehavior
                         EventName="TextChanged"
                         Command="{Binding AwaitSearchingCommand}" />
-                </SearchBar.Behaviors>
-            </SearchBar>
+                    </SearchBar.Behaviors>
+                </SearchBar>
+
+                <!--//V5-->
+                <!--https://fontawesome.com/v5/search?s=solid-->
+                <iconize:IconImage 
+                 Icon="fas-search" 
+                 IconColor="gray" 
+                 IconSize="45" />   
+            </StackLayout>
         </Frame>
+
+
         <ListView ItemsSource="{Binding AsignacionEstudiante}" BackgroundColor="LightGray" HasUnevenRows="True" SeparatorVisibility="Default">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="Model:AsignacionEstudiante">

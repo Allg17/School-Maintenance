@@ -14,6 +14,12 @@ namespace consult__studentsApp
         public App()
         {
             InitializeComponent();
+
+            Plugin.Iconize.Iconize
+                         .With(new Plugin.Iconize.Fonts.FontAwesomeRegularModule())
+                         .With(new Plugin.Iconize.Fonts.FontAwesomeBrandsModule())
+                         .With(new Plugin.Iconize.Fonts.FontAwesomeSolidModule());
+
             var language = CultureInfo.GetCultures(CultureTypes.NeutralCultures).ToList().First(element => element.EnglishName.Contains("Spanish")); ;
             Thread.CurrentThread.CurrentUICulture = language;
             AppResources.Culture = language;
